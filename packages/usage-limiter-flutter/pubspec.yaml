@@ -1,0 +1,11 @@
+name: usage_limiter_flutter
+description: Flutter widgets for the usage_limiter package.
+version: 0.1.0
+publish_to: none
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  usage_limiter:
+    path: ../usage-limiter-dart

@@ -1,0 +1,8 @@
+{
+  "name": "@usage-limit-warnings/server",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@usage-limit-warnings/typescript": "0.1.0"
+  }
+}

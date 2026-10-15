@@ -1,0 +1,12 @@
+name: usage_limiter_flutter_example
+description: Example usage for the usage_limiter_flutter package.
+publish_to: none
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  usage_limiter:
+    path: ../../usage-limiter-dart
+  usage_limiter_flutter:
+    path: ..

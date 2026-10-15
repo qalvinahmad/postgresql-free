@@ -1,0 +1,17 @@
+{
+  "name": "usage-limit-warnings",
+  "private": true,
+  "workspaces": [
+    "packages/usage-limiter-ts",
+    "packages/usage-limiter-server"
+  ],
+  "scripts": {
+    "test": "node --experimental-strip-types --test packages/usage-limiter-ts/test/*.test.ts packages/usage-limiter-server/test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.8.0"
+  }
+}

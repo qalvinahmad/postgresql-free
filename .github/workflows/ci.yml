@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typescript:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+
+  dart-flutter:
+    name: Dart and Flutter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: dart pub get
+        working-directory: packages/usage-limiter-dart
+      - run: dart analyze
+        working-directory: packages/usage-limiter-dart
+      - run: dart run --enable-asserts test/usage_limiter_test.dart
+        working-directory: packages/usage-limiter-dart
+      - run: flutter pub get
+        working-directory: packages/usage-limiter-flutter
+      - run: flutter analyze
+        working-directory: packages/usage-limiter-flutter
+      - run: flutter pub get
+        working-directory: packages/usage-limiter-flutter/example
+      - run: flutter analyze
+        working-directory: packages/usage-limiter-flutter/example
